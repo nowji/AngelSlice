@@ -47,6 +47,7 @@ export default function Home() {
       </main>
 
       <section className="font-outfit bg-[#FFF7EB] py-12 md:py-16 flex items-center justify-center">
+        <Link href="/order" passHref>
         <button className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] font-semibold px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl transition-all hover:scale-105 flex items-center gap-3 shadow-xl">
           Order Delivery
           <svg
@@ -63,6 +64,7 @@ export default function Home() {
             />
           </svg>
         </button>
+        </Link>
       </section>
 
     </div>
