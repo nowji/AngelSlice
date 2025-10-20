@@ -1,9 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import SideMenu from "./components/SideMenu";
 
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
+    <>
+    <SideMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     <div className="font-germania min-h-screen flex flex-col">
       <header className="bg-[#671835] text-[#FFF7EB] px-6 py-3">
         <div className="flex justify-between items-center">
@@ -47,7 +53,10 @@ export default function Home() {
       </main>
 
       <section className="font-outfit bg-[#FFF7EB] py-12 md:py-16 flex items-center justify-center">
-        <button className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] font-semibold px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl transition-all hover:scale-105 flex items-center gap-3 shadow-xl">
+        <button 
+          onClick={() => setIsMenuOpen(true)}
+          className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] font-semibold px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl transition-all hover:scale-105 flex items-center gap-3 shadow-xl"
+        >
           Order Delivery
           <svg
             className="w-6 h-6 text-[#FFF7EB]"
@@ -66,5 +75,6 @@ export default function Home() {
       </section>
 
     </div>
+    </>
     );
 }
