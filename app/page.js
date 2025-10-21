@@ -13,19 +13,51 @@ export default function Home() {
     <div className="font-germania min-h-screen flex flex-col">
       <header className="bg-[#671835] text-[#FFF7EB] px-6 py-3">
         <div className="flex justify-between items-center">
-          <div>
-            <h1 className="font-germania text-5xl md:text-5xl">Angel</h1>
-            <h1 className="font-germania text-5xl md:text-5xl">Slice</h1>
-          </div>
-          <Link href="/cart" className="cursor-pointer hover:opacity-80 transition-opacity mr-4 md:mr-8">
+          <div className="flex items-center gap-4">
             <Image
-              src="/checkout.png"
-              alt="Shopping cart"
-              width={32}
-              height={32}
-              className="w-10 h-10 md:w-10 md:h-10"
+              src="/logo.png"
+              alt="Angel Slice logo"
+              width={100}
+              height={100}
+              className="w-24 h-24"
             />
-          </Link>
+            <div>
+              <h1 className="font-germania text-5xl md:text-5xl">Angel</h1>
+              <h1 className="font-germania text-5xl md:text-5xl">Slice</h1>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 md:gap-6">
+            <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="font-outfit bg-[#FFF7EB] hover:opacity-85 text-[#671835] font-semibold px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl transition-all hover:scale-105 flex items-center gap-3 shadow-xl"
+            >
+              Order Delivery
+              <svg
+                className="w-6 h-6 text-[#671835]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </button>
+
+            <Link href="/cart" className="cursor-pointer hover:opacity-80 transition-opacity mr-4 md:mr-8">
+              <Image
+                src="/checkout.png"
+                alt="Shopping cart"
+                width={32}
+                height={32}
+                className="w-10 h-10 md:w-10 md:h-10"
+              />
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -53,25 +85,7 @@ export default function Home() {
       </main>
 
       <section className="font-outfit bg-[#FFF7EB] py-12 md:py-16 flex items-center justify-center">
-        <button 
-          onClick={() => setIsMenuOpen(true)}
-          className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] font-semibold px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl transition-all hover:scale-105 flex items-center gap-3 shadow-xl"
-        >
-          Order Delivery
-          <svg
-            className="w-6 h-6 text-[#FFF7EB]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 7l5 5m0 0l-5 5m5-5H6"
-            />
-          </svg>
-        </button>
+        
       </section>
 
     </div>

@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 export default function SideMenu({ isOpen, onClose }) {
+const router = useRouter();
   const handleSubmit = (event) => {
     event.preventDefault();
-    onClose(); 
+    onClose();
+    router.push('/order');
   };
 
   return (
@@ -78,13 +80,12 @@ export default function SideMenu({ isOpen, onClose }) {
             ></textarea>
           </div>
 
-          <Link href="/order" passHref>
           <button
             type="submit"
             className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] font-semibold w-full py-3 rounded-full text-lg transition-all hover:scale-105 shadow-lg mt-4"
           >
             Continue for Delivery
-          </button></Link>
+          </button>
         </form>
       </div>
     </main>
