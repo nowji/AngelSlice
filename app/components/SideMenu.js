@@ -1,32 +1,58 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
+import { db } from "@/lib/firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 export default function SideMenu({ isOpen, onClose }) {
-const router = useRouter();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onClose();
-    router.push('/order');
-  };
+  const router = useRouter();
 
+  if (typeof window !== "undefined") {
+    if (!localStorage.getItem("linkKey")) {
+      localStorage.setItem("linkKey", crypto.randomUUID());
+    }
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const name = form.get("name")?.toString().trim() || "";
+    const phone = form.get("phone")?.toString().trim() || "";
+    const birthday = form.get("birthday")?.toString().trim() || "";
+    const address = form.get("address")?.toString().trim() || "";
+    const linkKey = typeof window !== "undefined" ? localStorage.getItem("linkKey") : null;
+    const docData = {
+      createdAt: serverTimestamp(),
+      name,
+      phone,
+      birthday,
+      address,
+      linkKey,
+    };
+    try {
+      await addDoc(collection(db, "rewards"), docData);
+      onClose();
+      router.push('/order');
+    } catch (err) {
+      alert("Submission failed. Please try again.");
+    }
+  };
   return (
     <main
-      className={`fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out ${
-        isOpen ? "" : "translate-x-full"
-      }`}
+      className={`fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? "" : "translate-x-full"
+        }`}
     >
       <div
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
       ></div>
-      
+
       <div className="relative ml-auto h-full w-full max-w-sm bg-[#FFF7EB] p-6 shadow-xl font-outfit">
         <div className="flex justify-between items-center mb-8">
           <h2 className="font-germania text-3xl text-[#671835]">Sign up for rewards!</h2>
           <button onClick={onClose} className="text-4xl text-[#671835] hover:opacity-70">&times;</button>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div>
             <label htmlFor="name" className="block text-lg font-medium text-[#671835] mb-2">
