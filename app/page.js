@@ -13,7 +13,7 @@ export default function Home() {
     <div className="font-germania min-h-screen flex flex-col">
       <header className="bg-[#671835] text-[#FFF7EB] px-6 py-3">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-opacity">
             <Image
               src="/logo.png"
               alt="Angel Slice logo"
@@ -25,7 +25,7 @@ export default function Home() {
               <h1 className="font-germania text-5xl md:text-5xl">Angel</h1>
               <h1 className="font-germania text-5xl md:text-5xl">Slice</h1>
             </div>
-          </div>
+          </Link>
 
           <div className="flex items-center gap-4 md:gap-6">
             <button 
@@ -84,9 +84,83 @@ export default function Home() {
         </div>
       </main>
 
-      <section className="font-outfit bg-[#FFF7EB] py-12 md:py-16 flex items-center justify-center">
-        
-      </section>
+      
+
+        <section className="bg-[#FFF7EB] py-12 md:py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-outfit text-5xl md:text-6xl lg:text-7xl font-bold text-[#671835] mb-12 text-center md:text-left">
+              Weekly Deals
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {/* Weekly Deal 1 */}
+              <div className="rounded-3xl overflow-hidden shadow-xl">
+                <div className="relative h-64 md:h-72">
+                  <Image
+                    src="/pizza_deal_1.jpg"
+                    alt="Friday pizza deal"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-[#671835]/40"></div>
+                  
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                    <h3 className="font-outfit text-6xl md:text-7xl font-bold text-[#FFF7EB] drop-shadow-lg">
+                      10.99 Pizzas
+                    </h3>
+                    <p className="font-outfit text-5xl md:text-6xl font-bold text-[#FFF7EB] drop-shadow-lg">
+                      on Fridays
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-[#A45471] p-6 flex justify-between items-center">
+                  <p className="font-outfit text-1xl md:text-1xl text-[#FFF7EB] max-w-[60%]">
+                    Only available at select locations. May include extra charges for toppings and crust choices.
+                  </p>
+                  <button 
+                  onClick={() => setIsMenuOpen(true)}
+                  className="bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] font-outfit font-semibold px-8 py-4 rounded-full text-2xl transition-all hover:scale-105">
+                    REDEEM NOW
+                  </button>
+                </div>
+              </div>
+
+              {/* Weekly Deal 2 */}
+              <div className="rounded-3xl overflow-hidden shadow-xl">
+                <div className="relative h-64 md:h-72">
+                  <Image
+                    src="/pizza_deal_2.webp"
+                    alt="Friday pizza deal"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-[#671835]/40"></div>
+                  
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                    <h3 className="font-outfit text-6xl md:text-7xl font-bold text-[#FFF7EB] drop-shadow-lg">
+                      BOGO Sides
+                    </h3>
+                    <p className="font-outfit text-5xl md:text-6xl font-bold text-[#FFF7EB] drop-shadow-lg">
+                      on Tuesdays
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-[#A45471] p-6 flex justify-between items-center">
+                  <p className="font-outfit text-1xl md:text-1xl text-[#FFF7EB] max-w-[60%]">
+                    Only available at select locations. May include extra charges for toppings and crust choices.
+                  </p>
+                  <button 
+                    onClick={() => setIsMenuOpen(true)}
+                    className="bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] font-outfit font-semibold px-8 py-4 rounded-full text-2xl transition-all hover:scale-105">
+                    REDEEM NOW
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
     </div>
     </>
