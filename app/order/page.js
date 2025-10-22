@@ -39,6 +39,7 @@ export default function Order() {
 
   const handleAddToCart = () => {
     const orderItem = {
+        quantity,
         size,
         sauce,
         toppings,
@@ -83,11 +84,11 @@ export default function Order() {
                   <h1 className="text-6xl font-outfit font-bold m-0 leading-tight">Build Your Pizza</h1>
                   <div
                       className="flex items-center gap-12 border border-gray-300 rounded-2xl px-12 py-3 bg-white shadow-sm ml-auto">
-                      <span className="text-2xl text-center font-medium">Quantity</span>
+                      <span title="Number of Perpetrators" className="text-2xl text-center font-outfit font-medium">Quantity</span>
                       <button onClick={handleDecrease}
                               className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-[#671835] hover:text-[#FFF7EB]">-
                       </button>
-                      <span className="text-xl text-center font-medium ">[{quantity}]</span>
+                      <span className="text-xl text-center font-outfit font-medium ">[{quantity}]</span>
                       <button onClick={handleIncrease}
                               className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-[#671835] hover:text-[#FFF7EB]">+
                       </button>
@@ -99,8 +100,8 @@ export default function Order() {
               <div className=" flex-col flex-wrap items-start md:p-16 gap-12">
 
                   {/* Size Selection */}
-                  <h1 className="text-4xl">SIZE</h1>
-                  <div className="flex items-center gap-12 mt-6 mb-16">
+                  <h1 className="font-outfit text-4xl text-[#671835]" title="Severity">SIZE</h1>
+                  <div className="flex font-outfit items-center gap-12 mt-6 mb-16">
                       {sizes.map((s, index) => (
                           <button key={s} onClick={() => setSize(s)} title={sizeMeaning[index]}
                               className={`text-2xl px-6 py-3 rounded-lg transition ${size === s 
@@ -111,8 +112,8 @@ export default function Order() {
                   </div>
 
                   {/* Sauce Selection */}
-                  <h1 className="text-4xl">SAUCE</h1>
-                  <div className="flex items-center gap-12 mt-6 mb-16">
+                  <h1 className="font-outfit text-4xl text-[#671835]" title="Emergency Discretion">SAUCE</h1>
+                  <div className="flex font-outfit items-center gap-12 mt-6 mb-16">
                       {sauces.map((s, index) => (
                             <button key={s} onClick={() => setSauce(s)} title={sauceMeaning[index]}
                                     className={`flex flex-col items-center rounded-lg w-64  ${sauce === s 
@@ -131,8 +132,8 @@ export default function Order() {
                   </div>
 
                   {/* Toppings Selection */}
-                  <h1 className="text-4xl">TOPPINGS</h1>
-                  <div className="flex items-center gap-12 mt-6">
+                  <h1 className="font-outfit text-4xl text-[#671835]" title="Weapons">TOPPINGS</h1>
+                  <div className="flex font-outfit items-center gap-12 mt-6">
                        {toppingsOpt.slice(0, 4).map((t, index) => (
                            <button key={t} onClick={() => handleToppingToggle(t)} title={toppingsMeaning[index]}
                                    className={`text-2xl px-6 py-3 rounded-lg transition ${toppings.includes(t) 
@@ -141,7 +142,7 @@ export default function Order() {
                            </button>
                        ))}
                   </div>
-                  <div className="flex items-center gap-12 mt-6 mb-16">
+                  <div className="flex font-outfit items-center gap-12 mt-6 mb-16">
                       {toppingsOpt.slice(4).map((t, index) => (
                           <button key={t} onClick={() => handleToppingToggle(t)} title={toppingsMeaning[index+4]}
                               className={`text-2xl px-6 py-3 rounded-lg transition ${toppings.includes(t) 
@@ -152,8 +153,8 @@ export default function Order() {
                   </div>
 
                   {/* Sides Selection */}
-                  <h1 className="text-4xl">SIDES</h1>
-                  <div className="flex items-center gap-12 mt-6 mb-0">
+                  <h1 className="font-outfit text-4xl text-[#671835]" title="Children Involvement">SIDES</h1>
+                  <div className="flex font-outfit items-center gap-12 mt-6 mb-0">
                       {sides.map((s, index) => (
                           <button key={s} onClick={() => setSide(s)} title={sidesMeaning[index]}
                                   className={`text-2xl px-6 py-3 rounded-lg transition ${side === s 
@@ -167,7 +168,7 @@ export default function Order() {
               <div className="justify-center flex mb-16">
                   <Link href="/cart" passHref>
                   <button className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] md:text-4xl font-bold shadow-xl md:p-16
-                      md:py-5 rounded-full transition-all hover:scale-105 items-center ">Add to Cart
+                      md:py-5 rounded-full transition-all hover:scale-105 items-center font-outfit">Add to Cart
                   </button></Link>
               </div>
 
