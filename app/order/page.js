@@ -43,9 +43,9 @@ export default function Order() {
         size,
         sauce,
         toppings,
-        sides
+        side
     };
-    console.log("Added to cart:", orderItem);
+    localStorage.setItem('cart', JSON.stringify([orderItem]));
   };
 
   return (
@@ -167,7 +167,7 @@ export default function Order() {
 
               <div className="justify-center flex mb-16">
                   <Link href="/cart" passHref>
-                  <button className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] md:text-4xl font-bold shadow-xl md:p-16
+                  <button onClick={handleAddToCart} className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] md:text-4xl font-bold shadow-xl md:p-16
                       md:py-5 rounded-full transition-all hover:scale-105 items-center font-outfit">Add to Cart
                   </button></Link>
               </div>
