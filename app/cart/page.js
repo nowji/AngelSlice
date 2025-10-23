@@ -74,7 +74,7 @@ export default function Cart() {
                             alt="Shopping cart"
                             width={32}
                             height={32}
-                            className="w-12 h-12 md:w-12 md:h-12"
+                            className="w-10 h-10 md:w-10 md:h-10"
                         />
                     </Link>
                 </div>
