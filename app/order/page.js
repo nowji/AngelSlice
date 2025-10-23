@@ -61,8 +61,8 @@ export default function Order() {
                         className="w-24 h-24"
                     />
                     <div>
-                        <h1 className="font-germania text-5xl md:text-5xl">Angel</h1>
-                        <h1 className="font-germania text-5xl md:text-5xl">Slice</h1>
+                        <h1 className="font-germania text-5xl md:text-5xl select-none caret-transparent">Angel</h1>
+                        <h1 className="font-germania text-5xl md:text-5xl select-none caret-transparent">Slice</h1>
                     </div>
                     </Link>
                     
