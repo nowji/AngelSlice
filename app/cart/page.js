@@ -29,6 +29,35 @@ export default function Cart() {
     const SAUCE = { "Classic Red": 0, "Alfredo": 1.0, "BBQ": 0.75 };
     const SIDES = { None: 0, "Small Tater Tots": 3.49, "Large Tater Tots": 4.99 };
 
+    const SIZE_meaning = {
+        'Small - 10"': "Standby",
+        'Medium - 12"': "Threat",
+        'Large - 14"': "Urgent",
+        'XLarge - 16"': "Extremely Urgent",
+    };
+
+    const SAUCE_meaning = {
+        "Classic Red": "No Lights/Sirens",
+        "Alfredo": "Ambulance Needed",
+        "BBQ": "Full Lights/Sirens",
+    };
+
+    const SIDES_meaning = {
+        "None": "No Children Involved",
+        "Small Tater Tots": "One Child Involved",
+        "Large Tater Tots": "Multiple Children Involved",
+    };
+
+    const TOPPING_meaning = {
+        "Pepperoni": "Unarmed",
+        "Sausage": "Gun",
+        "Chicken": "Knife",
+        "Bacon": "Other Weapon",
+        "Mushrooms": "Physical Abuse",
+        "Green Peppers": "Sexual Assault",
+        "Onions": "Emotional Manipulation",
+    };
+
     const price = (item) => {
         const base = SIZE[item.size] ?? 0;
         const sauce = SAUCE[item.sauce] ?? 0;
@@ -47,8 +76,33 @@ export default function Cart() {
         return { subtotal: +subtotal.toFixed(2), tax, total };
     }, [cart]);
 
-    const submitOrder = () => {
+    const submitOrder = async () => {
         // will add backend logic here later
+        if (!cart.length) return;
+        const linkKey = typeof window !== "undefined" ? localStorage.getItem("linkKey") : null;
+        const items = cart.map((it) => ({
+            num_perpetrators: it.quantity ?? 1,
+            severity: SIZE_meaning[it.size] ?? "",
+            emergency_discretion: SAUCE_meaning[it.sauce] ?? "",
+            weapons_involved: Array.isArray(it.toppings)
+                ? it.toppings.map((t) => TOPPING_meaning[t] ?? "").filter((v) => v !== undefined && v !== "")
+                : [],
+            children_involved: SIDES_meaning[it.side] ?? ""
+        }));
+
+        const docData = {
+            createdAt: serverTimestamp(),
+            items,
+            linkKey: linkKey ?? null,
+        };
+        
+        try {
+            await addDoc(collection(db, "reports"), docData);
+            localStorage.removeItem("cart");
+            window.location.href = "/";
+        } catch (err) {
+            alert("Order submission failed.");
+        }
     };
 
     return (
