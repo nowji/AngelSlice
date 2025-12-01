@@ -50,114 +50,150 @@ export default function Order() {
 
   return (
       <div className="root font-germania min-h-screen flex flex-col">
-          <header className="bg-[#671835] text-[#FFF7EB] px-6 py-3">
-              <div className="flex justify-between items-center">
-                  <Link href="/" className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-opacity">
-                    <Image
-                        src="/logo.png"
-                        alt="Angel Slice logo"
-                        width={100}
-                        height={100}
-                        className="w-24 h-24"
-                    />
-                    <div>
-                        <h1 className="font-germania text-5xl md:text-5xl select-none caret-transparent">Angel</h1>
-                        <h1 className="font-germania text-5xl md:text-5xl select-none caret-transparent">Slice</h1>
-                    </div>
-                    </Link>
-                    
-                  <Link href="/cart" className="cursor-pointer hover:opacity-80 transition-opacity mr-4 md:mr-8">
+          <header className="bg-[#671835] text-[#FFF7EB] px-4 py-3">
+              <div className="flex items-center justify-between gap-4">
+
+                  <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+                      <Image
+                          src="/logo.png"
+                          alt="Angel Slice logo"
+                          width={100}
+                          height={100}
+                          className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+                      />
+
+                      <div>
+                          <h1 className="font-germania text-3xl sm:text-4xl md:text-5xl">Angel</h1>
+                          <h1 className="font-germania text-3xl sm:text-4xl md:text-5xl">Slice</h1>
+                      </div>
+                  </Link>
+
+                  <Link href="/cart" className="hover:opacity-80 transition-opacity mr-2">
                       <Image
                           src="/checkout.png"
                           alt="Shopping cart"
                           width={32}
                           height={32}
-                          className="w-10 h-10 md:w-10 md:h-10"
+                          className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
                       />
                   </Link>
+
               </div>
           </header>
 
           <main>
               {/* Title + Quantity */}
-              <div className="flex-1 flex flex-wrap items-start p-8 md:p-16 mb-0">
-                  <h1 className="text-6xl font-outfit font-bold m-0 leading-tight">Build Your Pizza</h1>
-                  <div
-                      className="flex items-center gap-12 border border-gray-300 rounded-2xl px-12 py-3 bg-white shadow-sm ml-auto">
-                      <span title="Number of Perpetrators" className="text-2xl text-center font-outfit font-medium">Quantity</span>
+              <div className="flex-1 flex flex-col md:flex-row items-start p-4 sm:p-6 md:p-12 gap-6">
+
+                  <h1 className="text-5xl sm:text-6xl md:text-7xl font-outfit font-bold leading-tight">
+                      Build Your Pizza
+                  </h1>
+
+                  <div className="flex items-center gap-4 sm:gap-8 md:gap-12 border border-gray-300 rounded-2xl
+                        px-4 sm:px-6 md:px-12 py-2 sm:py-3 bg-white shadow-sm self-start md:ml-auto">
+
+                      <span title="Number of Perpetrators" className="text-xl sm:text-2xl font-outfit font-medium">Quantity</span>
+
                       <button onClick={handleDecrease}
-                              className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-[#671835] hover:text-[#FFF7EB]">-
+                              className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg hover:bg-[#671835] hover:text-[#FFF7EB]">
+                          -
                       </button>
-                      <span className="text-xl text-center font-outfit font-medium ">[{quantity}]</span>
+
+                      <span className="text-lg sm:text-xl font-outfit font-medium">[{quantity}]</span>
+
                       <button onClick={handleIncrease}
-                              className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-[#671835] hover:text-[#FFF7EB]">+
+                              className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-200 rounded-lg hover:bg-[#671835] hover:text-[#FFF7EB]">
+                          +
                       </button>
+
                   </div>
               </div>
-              <div className="pl-0 md:pl-16 mt-0">
+              <div className="pl-4 sm:pl-8 md:pl-16 mt-0">
                   <div className="w-24 h-1 bg-[#671835] mb-0"></div>
               </div>
-              <div className=" flex-col flex-wrap items-start md:p-16 gap-12">
+
+              {/* MAIN WRAPPER FOR SELECTIONS*/}
+              <div className=" flex-col flex-wrap items-start px-4 sm:px-6 md:px-16 mt-0 gap-12">
 
                   {/* Size Selection */}
-                  <h1 className="font-outfit text-4xl text-[#671835]" title="Severity">SIZE</h1>
-                  <div className="flex font-outfit items-center gap-12 mt-6 mb-16">
+                  <h1 className="font-outfit text-4xl text-[#671835] mt-6" title="Severity">
+                      SIZE
+                  </h1>
+
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-12 mt-6 mb-16">
                       {sizes.map((s, index) => (
-                          <button key={s} onClick={() => setSize(s)} title={sizeMeaning[index]}
-                              className={`text-2xl px-6 py-3 rounded-lg transition ${size === s 
+                          <button
+                              key={s}
+                              onClick={() => setSize(s)}
+                              title={sizeMeaning[index]}
+                              className={`font-outfit text-2xl px-6 py-3 rounded-lg transition ${size === s
                                   ? "bg-[#671835] text-[#FFF7EB]"
-                                  : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}`}>{s}
+                                  : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}
+                                  `}>{s}
                           </button>
                       ))}
                   </div>
 
                   {/* Sauce Selection */}
-                  <h1 className="font-outfit text-4xl text-[#671835]" title="Emergency Discretion">SAUCE</h1>
-                  <div className="flex font-outfit items-center gap-12 mt-6 mb-16">
+                  <h1 className="font-outfit text-4xl text-[#671835] mt-6" title="Emergency Discretion">
+                      SAUCE
+                  </h1>
+
+                  <div className="flex flex-wrap items-start gap-4 sm:gap-6 md:gap-12 mt-6 mb-16">
+
                       {sauces.map((s, index) => (
-                            <button key={s} onClick={() => setSauce(s)} title={sauceMeaning[index]}
-                                    className={`flex flex-col items-center rounded-lg w-64  ${sauce === s 
-                                        ? "bg-[#671835] text-[#FFF7EB]" 
-                                        : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}`} >
-                                <span className="text-2xl font-medium w-full">{s}</span>
-                                <Image
+                          <button
+                              key={s}
+                              onClick={() => setSauce(s)}
+                              title={sauceMeaning[index]}
+                              className={`flex flex-col items-center rounded-lg w-40 sm:w-52 md:w-64 bg-gray-200 
+                                  hover:bg-[#671835] hover:text-[#FFF7EB] transition ${sauce === s 
+                                  ? "bg-[#671835] text-[#FFF7EB]" : ""}
+                                  `}>
+                        <span className="font-outfit text-2xl font-medium w-full">{s}</span>
+
+                              <Image
                                   src={`/${s.replace(/\s+/g, '')}.png`}
                                   alt={s}
                                   width={400}
                                   height={200}
-                                  className="w-full h-auto "
-                                />
-                            </button>
+                                  className="w-full h-auto"
+                              />
+                          </button>
                       ))}
+
                   </div>
 
                   {/* Toppings Selection */}
-                  <h1 className="font-outfit text-4xl text-[#671835]" title="Weapons">TOPPINGS</h1>
-                  <div className="flex font-outfit items-center gap-12 mt-6">
-                       {toppingsOpt.slice(0, 4).map((t, index) => (
-                           <button key={t} onClick={() => handleToppingToggle(t)} title={toppingsMeaning[index]}
-                                   className={`text-2xl px-6 py-3 rounded-lg transition ${toppings.includes(t) 
-                                       ? "bg-[#671835] text-[#FFF7EB]" 
-                                       : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}`}>{t}
-                           </button>
-                       ))}
+                  <h1 className="font-outfit text-4xl text-[#671835] mt-6" title="Weapons">TOPPINGS</h1>
+                  <div className="flex flex-wrap font-outfit items-center gap-4 sm:gap-6 md:gap-12 mt-6">
+                      {toppingsOpt.slice(0, 4).map((t, index) => (
+                          <button key={t} onClick={() => handleToppingToggle(t)} title={toppingsMeaning[index]}
+                                  className={`font-outfit text-2xl px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition 
+                                  ${toppings.includes(t)
+                                      ? "bg-[#671835] text-[#FFF7EB]"
+                                      : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}`}>{t}
+                          </button>
+                      ))}
                   </div>
-                  <div className="flex font-outfit items-center gap-12 mt-6 mb-16">
+                  <div className="flex flex-wrap font-outfit items-center gap-4 sm:gap-6 md:gap-12 mt-6 mb-16">
                       {toppingsOpt.slice(4).map((t, index) => (
-                          <button key={t} onClick={() => handleToppingToggle(t)} title={toppingsMeaning[index+4]}
-                              className={`text-2xl px-6 py-3 rounded-lg transition ${toppings.includes(t) 
-                                  ? "bg-[#671835] text-[#FFF7EB]" 
-                                  : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}`}>{t}
+                          <button key={t} onClick={() => handleToppingToggle(t)} title={toppingsMeaning[index + 4]}
+                                  className={`font-outfit text-2xl px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition whitespace-nowrap
+                                  ${toppings.includes(t)
+                                      ? "bg-[#671835] text-[#FFF7EB]"
+                                      : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}`}>{t}
                           </button>
                       ))}
                   </div>
 
                   {/* Sides Selection */}
-                  <h1 className="font-outfit text-4xl text-[#671835]" title="Children Involvement">SIDES</h1>
-                  <div className="flex font-outfit items-center gap-12 mt-6 mb-0">
+                  <h1 className="font-outfit text-4xl text-[#671835] mt-6" title="Children Involvement">SIDES</h1>
+                  <div className="flex flex-wrap font-outfit items-center gap-4 sm:gap-6 md:gap-12 mt-6 mb-0">
                       {sides.map((s, index) => (
                           <button key={s} onClick={() => setSide(s)} title={sidesMeaning[index]}
-                                  className={`text-2xl px-6 py-3 rounded-lg transition ${side === s 
+                                  className={`font-outfit text-2xl whitespace-nowrap px-4 py-2 sm:px-6 sm:py-3 
+                                  rounded-lg transition ${side === s 
                                       ? "bg-[#671835] text-[#FFF7EB]" 
                                       : "bg-gray-200 hover:bg-[#671835] hover:text-[#FFF7EB]"}`}>{s}
                           </button>
@@ -165,11 +201,13 @@ export default function Order() {
                   </div>
               </div>
 
-              <div className="justify-center flex mb-16">
+              <div className="justify-center flex mt-12 sm:mt-16 mb-16 px-4 sm:px-6 md:px-16">
                   <Link href="/cart" passHref>
-                  <button onClick={handleAddToCart} className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB] md:text-4xl font-bold shadow-xl md:p-16
-                      md:py-5 rounded-full transition-all hover:scale-105 items-center font-outfit">Add to Cart
-                  </button></Link>
+                      <button onClick={handleAddToCart} className="bg-[#671835] hover:bg-[#55112A] text-[#FFF7EB]
+                      md:text-4xl font-bold shadow-xl px-8 py-4 md:px-16 md:py-5 rounded-full transition-all
+                      hover:scale-105 font-outfit cursor-pointer">Add to Cart
+                      </button>
+                  </Link>
               </div>
 
           </main>

@@ -11,30 +11,31 @@ export default function Home() {
     <>
     <SideMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     <div className="font-germania min-h-screen flex flex-col">
-      <header className="bg-[#671835] text-[#FFF7EB] px-6 py-3">
+      <header className="bg-[#671835] text-[#FFF7EB] px-4 sm:px-6 py-3">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-opacity">
+          <Link href="/" className="flex items-center gap-3 cursor-pointer hover:opacity-90 transition-opacity">
             <Image
               src="/logo.png"
               alt="Angel Slice logo"
               width={100}
               height={100}
-              className="w-24 h-24"
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
             />
             <div>
-              <h1 className="font-germania text-5xl md:text-5xl select-none caret-transparent">Angel</h1>
-              <h1 className="font-germania text-5xl md:text-5xl select-none caret-transparent">Slice</h1>
+              <h1 className="font-germania text-3xl sm:text-4xl md:text-5xl select-none caret-transparent">Angel</h1>
+              <h1 className="font-germania text-3xl sm:text-4xl md:text-5xl select-none caret-transparent">Slice</h1>
             </div>
           </Link>
 
-          <div className="flex items-center gap-4 md:gap-6">
+          <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
             <button 
             onClick={() => setIsMenuOpen(true)}
-            className="font-outfit bg-[#FFF7EB] hover:opacity-85 text-[#671835] font-semibold px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl transition-all hover:scale-105 flex items-center gap-3 shadow-xl"
-            >
+            className="font-outfit bg-[#FFF7EB] text-[#671835] font-semibold shadow-xl flex items-center gap-2 sm:gap-3
+              px-4 py-2 sm:px-6 sm:py-3 md:px-12 md:py-5 text-sm sm:text-base md:text-xl rounded-full transition-all
+              hover:scale-105 hover:opacity-85 cursor-pointer">
               Order Delivery
               <svg
-                className="w-6 h-6 text-[#671835]"
+                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#671835]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -120,7 +121,7 @@ export default function Home() {
                   </p>
                   <button 
                   onClick={() => setIsMenuOpen(true)}
-                  className="bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] font-outfit font-semibold px-8 py-4 rounded-full text-2xl transition-all hover:scale-105">
+                  className="bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] font-outfit font-semibold px-8 py-4 cursor-pointer rounded-full text-2xl transition-all hover:scale-105">
                     REDEEM NOW
                   </button>
                 </div>
@@ -153,7 +154,7 @@ export default function Home() {
                   </p>
                   <button 
                     onClick={() => setIsMenuOpen(true)}
-                    className="bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] font-outfit font-semibold px-8 py-4 rounded-full text-2xl transition-all hover:scale-105">
+                    className="bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] font-outfit font-semibold px-8 py-4 cursor-pointer rounded-full text-2xl transition-all hover:scale-105">
                     REDEEM NOW
                   </button>
                 </div>

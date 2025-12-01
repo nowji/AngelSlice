@@ -107,28 +107,31 @@ export default function Cart() {
 
     return (
         <div className="root font-germania min-h-screen flex flex-col">
-            <header className="bg-[#671835] text-[#FFF7EB] px-6 py-3">
-                <div className="flex justify-between items-center">
-                    <Link href="/" className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-opacity">
+            <header className="bg-[#671835] text-[#FFF7EB] px-4 py-3">
+                <div className="flex items-center justify-between gap-4">
+
+                    <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
                         <Image
                             src="/logo.png"
                             alt="Angel Slice logo"
                             width={100}
                             height={100}
-                            className="w-24 h-24"
+                            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
                         />
+
                         <div>
-                            <h1 className="font-germania text-5xl md:text-5x select-none caret-transparent">Angel</h1>
-                            <h1 className="font-germania text-5xl md:text-5xl select-none caret-transparent">Slice</h1>
+                            <h1 className="font-germania text-3xl sm:text-4xl md:text-5xl">Angel</h1>
+                            <h1 className="font-germania text-3xl sm:text-4xl md:text-5xl">Slice</h1>
                         </div>
                     </Link>
-                    <Link href="/cart" className="cursor-pointer hover:opacity-80 transition-opacity mr-4 md:mr-8">
+
+                    <Link href="/cart" className="hover:opacity-80 transition-opacity mr-2">
                         <Image
                             src="/checkout.png"
                             alt="Shopping cart"
                             width={32}
                             height={32}
-                            className="w-10 h-10 md:w-10 md:h-10"
+                            className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
                         />
                     </Link>
                 </div>
@@ -136,16 +139,19 @@ export default function Cart() {
             <main>
                 <div className="flex-1 flex flex-col lg:flex-row gap-8 p-8 md:p-16 mb-0 text-black">
                     <div className="flex-1">
-                        <h1 className="text-6xl md:text-7xl font-outfit font-bold m-0 leading-tight caret-transparent">Checkout</h1>
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl font-outfit font-bold m-0 leading-tight caret-transparent">Checkout</h1>
                         <div className="w-full mt-8 font-outfit">
                             {cart.length > 0 ? (
                                 cart.map((item, index) => (
-                                    <div key={index} className="bg-white shadow-md rounded-2xl p-6 md:p-8 mb-6 caret-transparent">
+                                    <div key={index}
+                                         className="bg-white shadow-md rounded-2xl p-6 md:p-8 mb-6 caret-transparent">
                                         <div className="flex items-center justify-between mb-2">
                                             <h2 className="text-3xl md:text-4xl font-bold">Order #{index + 1}</h2>
-                                            <span className="text-xl md:text-2xl font-semibold text-[#671835]">${price(item).toFixed(2)}</span>
+                                            <span
+                                                className="text-xl md:text-2xl font-semibold text-[#671835]">${price(item).toFixed(2)}</span>
                                         </div>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 text-xl md:text-2xl">
+                                        <div
+                                            className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 text-xl md:text-2xl">
                                             <p><strong className="font-semibold">Quantity:</strong> {item.quantity}</p>
                                             <p><strong className="font-semibold">Size:</strong> {item.size}</p>
                                             <p><strong className="font-semibold">Sauce:</strong> {item.sauce}</p>
@@ -179,7 +185,7 @@ export default function Cart() {
                                     </div>
                                 </div>
                                 <button
-                                    className="w-full mt-6 bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] font-semibold px-8 py-5 rounded-full text-3xl transition-all hover:scale-[1.03] shadow-xl"
+                                    className="w-full mt-6 bg-[#671835] hover:bg-[#4d1228] text-[#FFF7EB] cursor-pointer font-semibold px-8 py-5 rounded-full text-3xl transition-all hover:scale-[1.03] shadow-xl"
                                     onClick={submitOrder}
                                 >
                                     Submit Order
