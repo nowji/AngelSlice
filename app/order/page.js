@@ -88,6 +88,17 @@ export default function Order() {
                   <h1 className="text-5xl sm:text-6xl md:text-7xl font-outfit font-bold leading-tight">
                       Build Your Pizza
                   </h1>
+                  {/* info icon */}
+                  <div className="group relative">
+                    <div className="w-6 h-6 rounded-full border-2 border-[#671835] text-[#671835] flex items-center justify-center font-serif font-bold hover:bg-[#671835] hover:text-[#FFFFFF] transition-colors">
+                        i
+                    </div>
+                          
+                    <div className="absolute left-full top-1/2 -translate-y-1/2 ml-3 w-48 bg-gray-200 text-black text-xs font-outfit px-3 py-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                        Hover over each option for more details.
+                    </div>
+                  </div>
+
 
                   <div className="flex items-center gap-4 sm:gap-8 md:gap-12 border border-gray-300 rounded-2xl
                         px-4 sm:px-6 md:px-12 py-2 sm:py-3 bg-white shadow-sm self-start md:ml-auto">
