@@ -9,7 +9,9 @@ export default function SideMenu({ isOpen, onClose }) {
 
   if (typeof window !== "undefined") {
     if (!localStorage.getItem("linkKey")) {
-      localStorage.setItem("linkKey", crypto.randomUUID());
+       const generateId = () =>
+          (crypto?.randomUUID?.() || Math.random().toString(36).substring(2, 15));
+       localStorage.setItem("linkKey", generateId());
     }
   }
 
